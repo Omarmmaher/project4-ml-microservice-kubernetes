@@ -28,7 +28,7 @@ jobs:
             - run:
                   name: Install hadolint
                   command: |
-                      make install-hadolint
+                      sudo make install-hadolint
             - run:
                   name: Run Lint
                   command: |
