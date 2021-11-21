@@ -1,1 +1,47 @@
+version: 2.1
+jobs:
+    build:
+        docker:
+            - image: circleci/python:3.7
+        steps:
+            - checkout
 
+            - restore_cache:
+                  keys:
+                      # Find a cache corresponding to this specific requirements.txt checksum
+                      # when this file is changed, this key will fail
+                      - v1-pip-deps-{{ checksum "requirements.txt" }}
+                      # Find the most recently generated cache used from any branch
+                      - v1-pip-deps-
+
+            - run:
+                  name: Install python dependencies
+                  command: |
+                      make setup
+                      source ~/.devops/bin/activate
+                      make install
+            - save_cache:
+                  key: v1-pip-deps-{{ checksum "requirements.txt" }}
+                  paths:
+                      - ~/.devops
+
+            - run:
+                  name: Install hadolint
+                  command: |
+                      sudo make install-hadolint
+            - run:
+                  name: Run Lint
+                  command: |
+                      source ~/.devops/bin/activate
+                      make lint
+     
+            - store_test_results:
+                  path: ~/test-results
+
+            - store_artifacts:
+                  path: ~/test-results
+
+workflows:
+    main:
+        jobs:
+            - build
