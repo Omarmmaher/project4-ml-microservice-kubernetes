@@ -1,5 +1,4 @@
-[![Circle CI](https://circleci.com/gh/Omarmmaher/project4-ml-microservice-kubernetes/.svg?style=svg&circle-token=cb6b266511edc298f9a105ebebaa5c3e0ecaf138)](https://app.circleci.com/pipelines/github/Omarmmaher/project4-ml-microservice-kubernetes?branch=main)
-
+[![CircleCI](https://circleci.com/gh/Omarmmaher/project4-ml-microservice-kubernetes/tree/main.svg?style=svg&circle-token=cb6b266511edc298f9a105ebebaa5c3e0ecaf138)](https://circleci.com/gh/Omarmmaher/project4-ml-microservice-kubernetes/tree/main)
 
 ## Project Overview
 
